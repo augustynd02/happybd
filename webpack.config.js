@@ -4,32 +4,25 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: 'main.js',
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.js',
+        assetModuleFilename: 'src/assets/[name].[ext]',
     },
     module: {
-      rules: [
-        {
-          test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        },
-        {
-            test: /\.(png|jpe?g|gif|svg)$/i,
-            use: [
-              {
-                loader: 'file-loader',
-                options: {
-                  name: '[name].[ext]',
-                  outputPath: 'images/',
-                },
-              },
-            ],
-          },
-      ],
+        rules: [
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
+              test: /\.(png|jpg|gif|svg|eot|ttf|woff)$/,
+              type: 'asset/resource'
+           }
+        ],
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'styles.css',
-      }),
+        new MiniCssExtractPlugin({
+            filename: 'styles.css',
+        }),
     ],
-  };
+};
