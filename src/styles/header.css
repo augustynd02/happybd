@@ -1,6 +1,15 @@
 header {
-    height: 50vh;
+    position: relative;
+
+    height: 100vh;
     background-color: rgb(20,20,20);
+    background:
+         radial-gradient(farthest-side at -33.33% 50%,#0000 52%,rgb(45, 45, 45) /* first color */ 54% 57%,#0000 59%) 0 calc(70px/2),
+         radial-gradient(farthest-side at 50% 133.33%,#0000 52%,rgb(45, 45, 45) /* first color */ 54% 57%,#0000 59%) calc(70px/2) 0,
+         radial-gradient(farthest-side at 133.33% 50%,#0000 52%,rgb(45, 45, 45) /* first color */ 54% 57%,#0000 59%),
+         radial-gradient(farthest-side at 50% -33.33%,#0000 52%,rgb(45, 45, 45) /* first color */ 54% 57%,#0000 59%),
+         rgb(20, 20, 20); /* second color */
+    background-size: calc(70px/4.667) 70px,70px calc(70px/4.667);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     z-index: 1;
 }
@@ -19,6 +28,16 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    animation: pulse 2s infinite alternate 3s, slide-from-left 3s, fade-in 5s;
+    animation: pulse 2s infinite alternate 3s, slide-from-left 3s, fade-in 10s;
 }
 
+header span {
+    position: absolute;
+    bottom: 20px;
+    color: white;
+
+    opacity: 0;
+
+    animation: fade-in 3s 3s forwards, shake 1s infinite 3s none;
+    animation-delay: 3s;
+}
