@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+
 #card-container {
     margin: 40px;
 }
@@ -12,7 +14,8 @@
     background-color: rgb(231, 188, 160);
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius: 4px;
-    transform: rotate(9deg);
+
+    animation: fade-in-scale 2s ease-in, fade-in 3s;
 }
 
 .card::before {
@@ -31,4 +34,16 @@
     bottom: 50%;
     width: 100%;
     box-shadow: 0 0 15px 0px rgb(85, 85, 85);
+}
+
+.card h2 {
+    font-family: Kristi;
+    text-align: center;
+    font-size: calc(2vw + 24px);
+}
+
+.card p {
+    font-family: Nanum Brush Script;
+    font-size: calc(0.5vw + 16px);
+    padding: 20px;
 }
