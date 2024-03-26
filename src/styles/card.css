@@ -2,6 +2,8 @@
 
 #card-container {
     margin: 40px;
+    perspective: 2000px;
+    height: 100vh;
 }
 
 .card {
@@ -12,10 +14,12 @@
 
     background: radial-gradient(circle, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.2) 100%);
     background-color: rgb(231, 188, 160);
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 50px -10px;
     border-radius: 4px;
 
-    animation: fade-in-scale 2s ease-in, fade-in 3s;
+    /* animation: fade-in-scale 2s ease-in, fade-in 3s; */
+
+    transition: transform 50ms ease;
 }
 
 .card::before {
