@@ -6,3 +6,5 @@ import './styles/animations.css';
 import './styles/card.css';
 
 import './assets/flowers.jpg';
+
+import './ui/rotateCard';
