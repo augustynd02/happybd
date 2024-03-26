@@ -19,16 +19,23 @@
     cursor: none;
 }
 
-.hidden p {
-    position: relative;
+.hidden:not(:hover) .circle {
+    display: none;
+}
+
+.hidden span {
+    color: rgb(20, 20, 20);
+    position: absolute;
+    top: 75%;
+    left: 60%;
     text-align: center;
-    z-index: 2
+    z-index: 2;
 }
 
 .circle {
     background-color: white;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
     position: absolute;
     z-index: 0;
