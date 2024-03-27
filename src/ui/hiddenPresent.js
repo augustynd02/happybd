@@ -8,3 +8,35 @@ hiddenContainer.addEventListener("mousemove", (e) => {
     circle.style.top = y - containerRect.top + 'px';
     circle.style.left = x + 'px';
 })
+
+const placeLink = async () => {
+    const link = document.createElement("a");
+    link.textContent = "KLIKNIJ!";
+
+    const randomTop = Math.floor(Math.random() * 100);
+    const randomLeft = Math.floor(Math.random() * 100);
+    link.href = "./pages/gift1.html";
+    link.target = "_blank";
+    link.style.top =`${randomTop}%`;
+    link.style.left =`${randomLeft}%`;
+
+    await new Promise(resolve => setTimeout(resolve, 10000));
+
+    hiddenContainer.appendChild(link);
+}
+
+const observer = new IntersectionObserver(entries => {
+    console.log(entries);
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            placeLink();
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5,
+});
+
+observer.observe(hiddenContainer);

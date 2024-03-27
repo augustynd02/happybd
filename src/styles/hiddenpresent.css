@@ -23,11 +23,9 @@
     display: none;
 }
 
-.hidden span {
+.hidden a {
     color: rgb(20, 20, 20);
     position: absolute;
-    top: 75%;
-    left: 60%;
     text-align: center;
     z-index: 2;
 }
