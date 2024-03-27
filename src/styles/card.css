@@ -26,7 +26,7 @@
     height: 100%;
     left: 50%;
     width: 1px;
-    box-shadow: 0 0 15px 0px rgb(85, 85, 85);
+    box-shadow: 0 0 10px 0px rgb(85, 85, 85);
 }
 
 .card::after {
@@ -35,7 +35,7 @@
     height: 1px;
     bottom: 50%;
     width: 100%;
-    box-shadow: 0 0 15px 0px rgb(85, 85, 85);
+    box-shadow: 0 0 10px 0px rgb(85, 85, 85);
 }
 
 .card h2 {
