@@ -28,7 +28,7 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    animation: pulse 2s infinite alternate 3s, slide-from-left 3s, fade-in 10s;
+    animation: pulse 2s infinite alternate 2s, slide-from-top 2s, fade-in 8s;
 }
 
 header span {
@@ -39,5 +39,5 @@ header span {
     opacity: 0;
 
     animation: fade-in 3s 3s forwards, shake 1s infinite 3s none;
-    animation-delay: 3s;
+    animation-delay: 2s;
 }
