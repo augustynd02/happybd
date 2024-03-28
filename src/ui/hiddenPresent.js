@@ -15,7 +15,7 @@ const placeLink = async () => {
 
     const randomTop = Math.floor(Math.random() * 100);
     const randomLeft = Math.floor(Math.random() * 100);
-    link.href = "./pages/gift1.html";
+    link.href = "./pages/gift1/gift1.html";
     link.target = "_blank";
     link.style.top =`${randomTop}%`;
     link.style.left =`${randomLeft}%`;
