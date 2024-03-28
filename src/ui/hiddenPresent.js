@@ -11,7 +11,7 @@ hiddenContainer.addEventListener("mousemove", (e) => {
 
 const placeLink = async () => {
     const link = document.createElement("a");
-    link.textContent = "KLIKNIJ!";
+    link.textContent = "click!";
 
     const randomTop = Math.floor(Math.random() * 100);
     const randomLeft = Math.floor(Math.random() * 100);
@@ -26,7 +26,6 @@ const placeLink = async () => {
 }
 
 const observer = new IntersectionObserver(entries => {
-    console.log(entries);
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             placeLink();

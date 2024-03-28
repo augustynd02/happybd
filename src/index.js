@@ -10,3 +10,14 @@ import './assets/flowers.jpg';
 
 import './ui/rotateCard';
 import './ui/hiddenPresent';
+import Confetti from './ui/confetti';
+
+const header = document.querySelector("header");
+
+header.addEventListener("animationend", (e) => {
+    if (e.animationName === "slide-from-top") {
+        new Confetti(header);
+    }
+})
+
+
