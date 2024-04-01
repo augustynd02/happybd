@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Kristi&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+html {
+    --s: 100px; /* control the size */
+    --c1: #1f1a24;
+    --c2: #4b3349;
+
+    --g: var(--c1)    3.125%,var(--c2) 0 9.375%,
+         var(--c1) 0 15.625%,var(--c2) 0 21.875%,
+         var(--c1) 0 28.125%,#0000 0;
+    background:
+      linear-gradient(225deg,#0000    3.125%,var(--c2) 0 9.375%,
+                             #0000 0 78.125%,var(--c2) 0 84.375%,#0000 0)
+       0 calc(var(--s)/2),
+      linear-gradient( 45deg,var(--g)) 0 var(--s),
+      linear-gradient( 45deg,var(--g)) calc(var(--s)/-2) calc(var(--s)/-2),
+      linear-gradient(225deg,var(--g)) var(--s) 0,
+      linear-gradient(225deg,var(--g)) calc(var(--s)/2) var(--s),
+      repeating-linear-gradient(-45deg,var(--c1) -3.125% 3.125%,var(--c2) 0 9.375%);
+    background-size: calc(2*var(--s)) calc(2*var(--s));
+    animation: movebg 60s infinite alternate;
+  }
+
+
+
+body {
+    margin: 0px;
+    min-height: 100vh;
+    font-family: Roboto;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+svg {
+    width: min(256px, 90vw);
+    position: absolute;
+}
+
+.present {
+    animation: fade-in 1s forwards;
+}
+
+.ring {
+    transform: scale(0);
+    animation: fade-in 2s forwards, rotate 120s infinite alternate 2s;
+}
+
+h1 {
+    color: white;
+    font-size: calc(2vw + 24px);
+    position: absolute;
+    top: 0%;
+    text-align: center;
+
+    user-select: none;
+    animation: slide-from-top 1s forwards;
+}
+
+p {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    font-size: calc(0.5vw + 16px);
+    animation: fade-in 2s forwards ease-out;
+}
+
+@keyframes movebg {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 50% 50%;
+    }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-5px) rotate(5deg); }
+    50% { transform: translateX(5px) rotate(0deg); }
+    75% { transform: translateX(-5px) rotate(-5deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+  }
+
+@keyframes hide {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    20% {
+        transform: translateY(-40%) rotate(-8deg);
+    }
+    100% {
+        transform: translateY(400%) rotate(360deg);
+    }
+}
+
+@keyframes fade-in{
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slide-from-top {
+    from {
+        transform: translateY(-200%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+  .shake {
+    animation: shake 0.5s;
+  }
+
+.hide {
+    animation: hide 1.5s forwards;
+}
