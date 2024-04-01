@@ -25,9 +25,27 @@
     }
 }
 
+@keyframes slide-from-bottom {
+    from {
+        transform: translateY(200%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 @keyframes slide-from-left {
     0% {
         transform: translateX(-200%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-from-right {
+    0% {
+        transform: translateX(200%);
     }
     100% {
         transform: translateX(0);

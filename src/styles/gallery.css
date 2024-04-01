@@ -1,4 +1,5 @@
 #gallery-section {
+    position: relative;
     height: 75vh;
 
     display: flex;
@@ -7,15 +8,45 @@
 }
 
 .gallery-container {
-    width: 250px;
+    max-width: 250px;
+    width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+
+    visibility: hidden;
+}
+
+#gallery-section h2 {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: absolute;
+    top: 0;
+}
+
+.gallery-container h3 {
+    font-family: cursive;
+    font-size: 36px;
+}
+
+.gallery-right-animation {
+    animation: slide-from-left 1s forwards, fade-in 3s forwards;
+    visibility: visible;
+}
+
+.gallery-bottom-animation {
+    animation: slide-from-bottom 1s forwards, fade-in 3s forwards;
+    visibility: visible;
+}
+
+.gallery-left-animation {
+    animation: slide-from-right 1s forwards, fade-in 3s forwards;
+    visibility: visible;
 }
 
 .gallery {
     position: relative;
-    width: 250px;
+    width: 100%;
     aspect-ratio: 5/7;
     border-radius: 1em;
 }
@@ -78,7 +109,7 @@
 }
 
 .slideshow-container {
-    width: 400px;
+    width: 600px;
     aspect-ratio: 5/7;
 
     position: absolute;
@@ -97,7 +128,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: 0.8s ease-out;
 }
 
@@ -117,18 +148,30 @@
     transform: translateX(100%) scale(0);
 }
 
-.slideshow-container button {
+.popup-container button {
     position: absolute;
     height: 100%;
-    padding: 10px 20px;
+    padding: 10px 50px;
 
-    background-color: transparent;
+    background-color: rgba(0,0,0,0.3);
+    border: none;
     outline: none;
+
+    background-size: 64px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+    transition: 0.8s;
+
+    z-index: 20;
 }
 
 .left {
+    background-image: url('../assets/icons/left.svg');
 }
 
 .right {
+    background-image: url('../assets/icons/right.svg');
     right: 0;
 }

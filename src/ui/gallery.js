@@ -1,9 +1,39 @@
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entryGalleryAnimation();
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5,
+});
+
+observer.observe(document.querySelector("#gallery-section"));
+
+const entryGalleryAnimation = () => {
+    const left = document.querySelector(".gallery-container:has(.gallery[data-category='randki'])")
+    left.classList.add("gallery-left-animation");
+    const bottom = document.querySelector(".gallery-container:has(.gallery[data-category='wyjscia'])")
+    bottom.classList.add("gallery-bottom-animation")
+    const right = document.querySelector(".gallery-container:has(.gallery[data-category='losowe'])")
+    right.classList.add("gallery-right-animation");
+}
 
 const createPopupGallery = (category) => {
     const body = document.querySelector("body");
 
     const popupContainer = document.createElement("div");
     popupContainer.classList.add("popup-container");
+    popupContainer.addEventListener("click", (e) => {
+        if (e.target.nodeName === "IMG") {
+            window.open(e.target.src);
+            return;
+        }
+        closePopup();
+    })
     const slideshowContainer = document.createElement("div");
     slideshowContainer.classList.add("slideshow-container");
     const slideshow = document.createElement("div");
@@ -13,19 +43,22 @@ const createPopupGallery = (category) => {
 
     const left = document.createElement("button");
     left.classList.add("left");
-    left.addEventListener("click", () => {
+    left.addEventListener("click", (e) => {
+        e.stopPropagation();
         switchImage("left");
     })
 
     const right = document.createElement("button");
     right.classList.add("right");
-    right.addEventListener("click", () => {
+    right.addEventListener("click", (e) => {
+        e.stopPropagation();
         switchImage("right");
     })
 
-    slideshowContainer.append(slideshow, left, right);
-    popupContainer.append(slideshowContainer);
+    slideshowContainer.append(slideshow);
+    popupContainer.append(slideshowContainer, left, right);
     body.appendChild(popupContainer);
+    body.style.overflow = "hidden";
 }
 
 const switchImage = (direction) => {
@@ -58,37 +91,50 @@ const switchImage = (direction) => {
 }
 
 const galleries = document.querySelectorAll('.gallery');
-for(let i = 0; i < galleries.length; i++) {
+for (let i = 0; i < galleries.length; i++) {
     galleries[i].addEventListener("click", (e) => {
         createPopupGallery(galleries[i].getAttribute("data-category"));
     });
 }
 
 const insertImages = (category) => {
-    console.log(category);
-    switch(category) {
+    let images = [];
+    switch (category) {
         case "randki":
-            const img1 = document.createElement("img");
-            img1.src = "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww";
-            img1.setAttribute("data-index", '0');
-            img1.classList.add("active");
-            const img2 = document.createElement("img");
-            img2.src = "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0fGVufDB8fDB8fHww";
-            img2.setAttribute("data-index", '1');
-            img2.classList.add("inactive");
-            const img3 = document.createElement("img");
-            img3.src = "https://images.unsplash.com/photo-1618826411640-d6df44dd3f7a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2F0fGVufDB8fDB8fHww";
-            img3.setAttribute("data-index", '2');
-            img3.classList.add("inactive");
-            const img4 = document.createElement("img");
-            img4.src = "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2F0fGVufDB8fDB8fHww";
-            img4.setAttribute("data-index", '3');
-            img4.classList.add("inactive");
-
-            return [img1, img2, img3, img4];
-        case "wyjazdy":
+            for (let i = 0; i < 30; i++) {
+                let img = document.createElement("img");
+                img.src = `assets/gallery-images/randki/${i}.jpg`;
+                img.setAttribute("data-index", `${i}`);
+                if (i == 0) img.classList.add("active");
+                else img.classList.add("inactive");
+                images.push(img);
+            }
+            break;
+        case "wyjscia":
+            for (let i = 0; i < 12; i++) {
+                let img = document.createElement("img");
+                img.src = `assets/gallery-images/wyjscia/${i}.jpg`;
+                img.setAttribute("data-index", `${i}`);
+                if (i == 0) img.classList.add("active");
+                else img.classList.add("inactive");
+                images.push(img);
+            }
             break;
         case "losowe":
+            for (let i = 0; i < 26; i++) {
+                let img = document.createElement("img");
+                img.src = `assets/gallery-images/losowe/${i}.jpg`;
+                img.setAttribute("data-index", `${i}`);
+                if (i == 0) img.classList.add("active");
+                else img.classList.add("inactive");
+                images.push(img);
+            }
             break;
     }
+    return images;
+}
+
+const closePopup = () => {
+    const popupContainer = document.querySelector(".popup-container");
+    document.body.removeChild(popupContainer);
 }
