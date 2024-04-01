@@ -137,4 +137,5 @@ const insertImages = (category) => {
 const closePopup = () => {
     const popupContainer = document.querySelector(".popup-container");
     document.body.removeChild(popupContainer);
+    document.body.style.overflow = "hidden visible";
 }
