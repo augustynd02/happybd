@@ -4,8 +4,9 @@ import './styles/content.css';
 import './styles/footer.css';
 import './styles/animations.css';
 import './styles/card.css';
-import './styles/hiddenpresent.css'
-import './styles/gallery.css'
+import './styles/hiddenpresent.css';
+import './styles/gallery.css';
+import './styles/presentgame.css';
 
 import './assets/flowers.jpg';
 import './assets/gallery-images/randki/0.jpg';
