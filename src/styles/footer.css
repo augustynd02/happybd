@@ -2,3 +2,12 @@ footer {
     background-color: rgb(20, 20, 20);
     height: 50px;
 }
+
+footer p {
+    color: white;
+}
+
+footer p span {
+    font-family: cursive;
+    color: rgb(183, 154, 211);
+}
