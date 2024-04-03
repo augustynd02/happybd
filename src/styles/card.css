@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
 
 #card-container {
-    margin: 40px;
     perspective: 2000px;
     height: 100vh;
+    --dot-bg: rgb(238, 236, 238);
+    --dot-color: rgb(0, 0, 0);
+    --dot-size: 1px;
+    --dot-space: 22px;
+      background:
+          linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+          linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+          var(--dot-color);
 }
 
 .card {
@@ -47,5 +54,14 @@
 .card p {
     font-family: Nanum Brush Script;
     font-size: calc(0.5vw + 12px);
+    padding: 10px 20px;
+}
+
+.card span {
+    font-size: calc(1vw + 12px);
     padding: 20px;
+    font-family: Kristi;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
